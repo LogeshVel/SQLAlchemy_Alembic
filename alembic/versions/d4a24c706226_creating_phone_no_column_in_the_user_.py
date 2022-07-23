@@ -21,4 +21,5 @@ def upgrade() -> None:
 
 
 def downgrade() -> None:
-    pass
+    with op.batch_alter_table('user', schema=None) as batch_op:
+        batch_op.drop_column('phone_no')
