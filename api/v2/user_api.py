@@ -1,12 +1,12 @@
 from fastapi import APIRouter, HTTPException
 from starlette import status
 
-from api.user_model import UserModel
+from api.v2.user_model import UserModel
 from db.database import sql_engine, Base
-from db.db_worker import read_all_users, read_user, add_user, update_db_user, delete_db_user
+from db.v2.db_workers import read_all_users, read_user, add_user, update_db_user, delete_db_user
 
-user_api = APIRouter(prefix="/v1/users", tags=['Users v1', ])
-Base.metadata.create_all(bind=sql_engine,)
+user_api = APIRouter(prefix="/v2/users", tags=['Users v2', ])
+Base.metadata.create_all(bind=sql_engine)
 
 
 @user_api.get('/')
